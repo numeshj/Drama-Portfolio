@@ -1,11 +1,18 @@
-.hero { position:relative; height: 340px; border-radius: var(--radius-lg); overflow:hidden; margin-bottom:2.2rem; background:#000; box-shadow: 0 20px 50px -15px rgba(0,0,0,.6); }
+.hero { position:relative; height: clamp(420px, 60vh, 740px); border-radius: var(--radius-lg); overflow:hidden; margin-bottom:2.2rem; background:#000; box-shadow: 0 20px 50px -15px rgba(0,0,0,.6); isolation:isolate; background-size:cover; background-position:center; }
+/* hero-full removed per revert to compact height */
 .hero-backdrops { position:absolute; inset:0; }
 .hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transform:scale(1.1); transition: opacity 1200ms ease, transform 7000ms linear; filter:brightness(.78) saturate(1.15); }
 .hero-slide.active { opacity:1; transform:scale(1); }
+.hero-slide.portrait { background-size:contain; background-repeat:no-repeat; background-color:#000; }
 .hero-gradient { position:absolute; inset:0; background: radial-gradient(circle at 30% 40%,rgba(0,0,0,.0),rgba(0,0,0,.55)); pointer-events:none; }
-.hero-overlay { position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start; gap:.6rem; padding:2.2rem 2.4rem; max-width:640px; }
+.hero-overlay { position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start; gap:.75rem; padding:clamp(1.4rem,3.5vw,3rem) clamp(1.2rem,4vw,3.2rem); max-width:640px; }
 .hero-logo { width:86px; height:86px; object-fit:cover; border-radius:18px; border:2px solid rgba(255,255,255,0.4); backdrop-filter:blur(3px); box-shadow:0 4px 16px -4px rgba(0,0,0,.6); animation: float 6s ease-in-out infinite; }
-.hero-title { font-size: clamp(1.9rem, 3.4vw, 3rem); margin:0; line-height:1.05; letter-spacing:.5px; text-shadow:0 4px 18px rgba(0,0,0,.55); }
+.hero-title { font-size: clamp(2rem, 5vw, 3.6rem); margin:0; line-height:1.03; letter-spacing:.75px; text-shadow:0 6px 26px rgba(0,0,0,.6); }
 .hero-tag { margin:0; font-size:.95rem; font-weight:500; color: var(--color-text); background: rgba(0,0,0,.35); padding:.5rem .9rem; border-radius: var(--radius-md); backdrop-filter: blur(6px); box-shadow:0 2px 8px -2px rgba(0,0,0,.5); }
 @keyframes float { 0%,100% { transform:translateY(0);} 50% { transform:translateY(-8px);} }
-@media (max-width: 640px){ .hero { height: 280px; } .hero-overlay { padding:1.3rem 1.4rem; } .hero-logo { width:68px; height:68px; } }
+@media (max-width: 640px){
+	.hero { height: clamp(340px, 54vh, 560px); }
+	.hero-overlay { padding:1.3rem 1.4rem; }
+	.hero-logo { width:68px; height:68px; }
+	.hero-tag { font-size:.8rem; padding:.45rem .75rem; }
+}

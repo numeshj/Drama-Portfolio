@@ -42,19 +42,18 @@ const sinhala = `නාට්‍ය විස්තරය – රහස් න�
 \nපරිණාමය – දඬුවමට වඩා කරුණාව සහ සමාව මඟින් පුද්ගලයෙකු වෙනස් කළ හැකි බව මෙම කෘතිය පැහැදිලියි.`;
 
 export default function ScriptPage(){
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isSinhala = lang === 'si';
+  const content = isSinhala ? sinhala : english;
+  const heading = isSinhala ? t('script.sinhalaHeading') : t('script.englishHeading');
   return (
-    <div className="script-page">
+    <div className="script-page single">
       <h2 className="gradient-text" style={{marginTop:0}}>{t('script.title')}</h2>
       <p style={{opacity:.8, marginTop:'.25rem'}}>{t('script.subtitle')}</p>
-      <div className="script-panels">
+      <div className="script-panels single">
         <section className="script-panel">
-          <h3>{t('script.englishHeading')}</h3>
-          <pre className="script-text">{english}</pre>
-        </section>
-        <section className="script-panel">
-          <h3>{t('script.sinhalaHeading')}</h3>
-          <pre className="script-text si-text">{sinhala}</pre>
+          <h3>{heading}</h3>
+          <pre className={`script-text ${isSinhala?'si-text':''}`}>{content}</pre>
         </section>
       </div>
     </div>

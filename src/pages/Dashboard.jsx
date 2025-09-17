@@ -21,12 +21,14 @@ export default function Dashboard(){
       <Hero />
       <h2 className="gradient-text" style={{marginTop:0}}>{t('dashboard.heading')}</h2>
       <p style={{maxWidth:680, lineHeight:1.55, fontSize:'.9rem'}}>{t('dashboard.intro')}</p>
-      <div className="dashboard-grid">
-        {cards.map(c => (
-          <Link key={c.to} to={c.to} className="dashboard-card">
-            <small>{c.to.replace('/','').replace('-',' ') || 'root'}</small>
-            <strong>{c.label}</strong>
-            <span className="cta">{c.cta}</span>
+      <div className="dashboard-grid colorful">
+        {cards.map((c,i) => (
+          <Link key={c.to} to={c.to} className={`dashboard-card fancy f-${(i%8)+1}`} style={{'--i':i}}>
+            <div className="card-inner">
+              <small>{c.to.replace('/','').replace('-',' ') || 'root'}</small>
+              <strong>{c.label}</strong>
+              <span className="cta">{c.cta}</span>
+            </div>
           </Link>
         ))}
       </div>

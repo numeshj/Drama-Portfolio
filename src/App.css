@@ -1,9 +1,5 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+/* Removed legacy Vite scaffold constraints to allow full-bleed layout */
+#root { width:100%; min-height:100%; }
 
 .logo {
   height: 6em;
