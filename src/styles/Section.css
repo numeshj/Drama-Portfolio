@@ -1,0 +1,19 @@
+.portfolio-section { --pad:1.2rem; position: relative; background: linear-gradient(145deg, var(--color-surface), var(--color-bg-alt)); border:1px solid var(--color-border); padding: var(--pad); border-radius: var(--radius-lg); margin: 1.2rem 0; overflow:hidden; transform: translateY(30px) scale(.96); opacity:0; transition: transform 700ms cubic-bezier(.23,1,.32,1), opacity 700ms, box-shadow 600ms; box-shadow: var(--shadow-sm); }
+.portfolio-section:before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 20% 15%, rgba(var(--color-accent-rgb),0.18), transparent 60%); mix-blend-mode: overlay; opacity:.4; pointer-events:none; }
+.portfolio-section.show { opacity:1; transform: translateY(0) scale(1); box-shadow: 0 8px 30px -8px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,0.05); }
+.portfolio-section:hover { box-shadow: 0 12px 40px -10px rgba(0,0,0,.65), 0 0 0 1px rgba(var(--color-accent-rgb),0.25); }
+.portfolio-section h3 { margin:0 0 .65rem; font-size:1.05rem; letter-spacing:.5px; background: linear-gradient(90deg, var(--color-accent), #ffdb99); -webkit-background-clip:text; background-clip:text; color: transparent; }
+.portfolio-section p { margin:0; line-height:1.55; font-size:.85rem; }
+.portfolio-section p code { background: var(--color-bg-alt); padding:.15rem .4rem; border-radius: var(--radius-sm); font-size:.75rem; }
+.variant-sunrise { background: linear-gradient(135deg,#44220f,#6d3412,#a84b12); }
+.variant-violet { background: linear-gradient(135deg,#2b1f49,#3d2c6b,#583b94); }
+.variant-amber { background: linear-gradient(135deg,#4b2f04,#825105,#c57806); }
+.variant-teal { background: linear-gradient(135deg,#053f45,#066871,#08919d); }
+.variant-pink { background: linear-gradient(135deg,#4a1432,#702149,#a22f66); }
+.variant-lime { background: linear-gradient(135deg,#253c05,#3f6310,#6b9c1d); }
+.variant-ocean { background: linear-gradient(135deg,#0d2347,#0f3b70,#12579d); }
+.variant-gold { background: linear-gradient(135deg,#3d2e06,#5d4308,#8f640c); }
+.portfolio-section[class*='variant-'] { border:1px solid rgba(255,255,255,0.08); }
+.portfolio-section[class*='variant-'] h3 { background: linear-gradient(90deg,#fff,#ffe9c3); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.section-inner { position:relative; z-index:2; }
+.portfolio-section:after { content:""; position:absolute; inset:0; background: radial-gradient(circle at 80% 120%,rgba(255,255,255,.12), transparent 70%); mix-blend-mode: overlay; pointer-events:none; opacity:.5; }

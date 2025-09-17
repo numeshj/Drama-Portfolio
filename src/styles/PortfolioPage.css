@@ -1,0 +1,10 @@
+.portfolio-wrapper { max-width: 940px; margin: 0 auto; }
+.portfolio-head { display:flex; justify-content:flex-end; padding: .5rem 0 1rem; position:sticky; top:0; backdrop-filter: blur(8px); z-index:5; }
+.portfolio-grid { display:grid; grid-template-columns: 260px 1fr; gap: 2rem; }
+.portfolio-grid .sections-col { min-width:0; }
+.portfolio-grid .toc-col { display:none; }
+@media (min-width: 980px){
+  .portfolio-grid .toc-col { display:block; }
+}
+.sections { padding-bottom:3rem; }
+.sections-col { padding-bottom:3rem; }
