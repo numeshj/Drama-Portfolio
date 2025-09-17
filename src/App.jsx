@@ -4,6 +4,8 @@ import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import CategoryPage from './pages/CategoryPage';
 import PortfolioPage from './pages/PortfolioPage';
+import ScriptPage from './pages/ScriptPage';
+import ApplicationPage from './pages/ApplicationPage';
 import { LanguageProvider } from './contexts/LanguageContext';
 import './App.css';
 
@@ -15,6 +17,8 @@ export default function App(){
           <Route element={<Layout />}> 
             <Route index element={<Dashboard />} />
             <Route path="portfolio" element={<PortfolioPage />} />
+            <Route path="script" element={<ScriptPage />} />
+            <Route path="application" element={<ApplicationPage />} />
             <Route path="costume" element={<CategoryPage category="costume" />} />
             <Route path="background-setup" element={<CategoryPage category="background-setup" />} />
             <Route path="props" element={<CategoryPage category="props" />} />

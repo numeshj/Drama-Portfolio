@@ -23,7 +23,7 @@ export default function Hero(){
       </div>
       <div className="hero-overlay">
         <img src={logo} alt="School Logo" className="hero-logo" />
-        <h1 className="hero-title gradient-text">{t('general.appTitle')}</h1>
+        <h1 className="hero-title gradient-text">{t('appTitle')}</h1>
         <p className="hero-tag">{t('hero.tagline')}</p>
       </div>
       <div className="hero-gradient" />

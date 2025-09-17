@@ -10,6 +10,8 @@ export default function Layout() {
   const categories = [
     { path: '/', label: t('nav.dashboard'), exact: true },
     { path: '/portfolio', label: t('nav.portfolio') },
+    { path: '/script', label: t('nav.script') },
+    { path: '/application', label: t('nav.application') },
     { path: '/costume', label: t('nav.costume') },
     { path: '/background-setup', label: t('nav.backgroundSetup') },
     { path: '/props', label: t('nav.props') },

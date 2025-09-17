@@ -6,24 +6,27 @@ import { useLanguage } from '../contexts/LanguageContext';
 export default function Dashboard(){
   const { t } = useLanguage();
   const cards = [
-    { to: '/portfolio', label: t('nav.portfolio') },
-    { to: '/costume', label: t('nav.costume') },
-    { to: '/background-setup', label: t('nav.backgroundSetup') },
-    { to: '/props', label: t('nav.props') },
-    { to: '/practices', label: t('nav.practices') },
-    { to: '/preparations', label: t('nav.preparations') },
-    { to: '/fund-raising', label: t('nav.fundRaising') },
+    { to: '/script', label: t('nav.script'), cta: t('nav.portfolio') === 'Portfolio' ? 'View description →' : 'විස්තරය බලන්න →' },
+    { to: '/application', label: t('nav.application'), cta: t('nav.portfolio') === 'Portfolio' ? 'View pages →' : 'පිටු බලන්න →' },
+    { to: '/portfolio', label: t('nav.portfolio'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
+    { to: '/costume', label: t('nav.costume'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
+    { to: '/background-setup', label: t('nav.backgroundSetup'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
+    { to: '/props', label: t('nav.props'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
+    { to: '/practices', label: t('nav.practices'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
+    { to: '/preparations', label: t('nav.preparations'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
+    { to: '/fund-raising', label: t('nav.fundRaising'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
   ];
   return (
     <div>
       <Hero />
-      <h2 style={{marginTop:0}}>{t('dashboard.heading')}</h2>
-      <p style={{maxWidth:600, lineHeight:1.5}}>{t('dashboard.intro')}</p>
-      <div style={{display:'grid', gap:'1rem', gridTemplateColumns:'repeat(auto-fill,minmax(200px,1fr))', marginTop:'2rem'}}>
+      <h2 className="gradient-text" style={{marginTop:0}}>{t('dashboard.heading')}</h2>
+      <p style={{maxWidth:680, lineHeight:1.55, fontSize:'.9rem'}}>{t('dashboard.intro')}</p>
+      <div className="dashboard-grid">
         {cards.map(c => (
-          <Link key={c.to} to={c.to} style={{background:'var(--color-surface)', border:'1px solid var(--color-border)', padding:'1rem', borderRadius:'var(--radius-md)', textDecoration:'none', color:'var(--color-text)', boxShadow:'var(--shadow-sm)', display:'flex', flexDirection:'column', gap:'.5rem'}}>
+          <Link key={c.to} to={c.to} className="dashboard-card">
+            <small>{c.to.replace('/','').replace('-',' ') || 'root'}</small>
             <strong>{c.label}</strong>
-            <span style={{fontSize:'.75rem', opacity:.7}}>{t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →'}</span>
+            <span className="cta">{c.cta}</span>
           </Link>
         ))}
       </div>
