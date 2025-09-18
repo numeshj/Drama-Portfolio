@@ -45,7 +45,7 @@ export default function ScriptPage(){
   const { t, lang } = useLanguage();
   const isSinhala = lang === 'si';
   const content = isSinhala ? sinhala : english;
-  const heading = isSinhala ? t('script.sinhalaHeading') : t('script.englishHeading');
+  const heading = isSinhala ? t('') : t('');
   return (
     <div className="script-page single">
       <h2 className="gradient-text" style={{marginTop:0}}>{t('script.title')}</h2>
