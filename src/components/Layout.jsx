@@ -11,15 +11,15 @@ export default function Layout() {
   const { t } = useLanguage();
   const categories = [
     { path: '/', label: t('nav.dashboard'), exact: true },
-    { path: '/portfolio', label: t('nav.portfolio') },
     { path: '/script', label: t('nav.script') },
     { path: '/application', label: t('nav.application') },
     { path: '/costume', label: t('nav.costume') },
     { path: '/background-setup', label: t('nav.backgroundSetup') },
-    { path: '/props', label: t('nav.props') },
+  { path: '/props', label: t('nav.props') },
     { path: '/practices', label: t('nav.practices') },
     { path: '/preparations', label: t('nav.preparations') },
     { path: '/fund-raising', label: t('nav.fundRaising') },
+  { path: '/music-composition', label: t('nav.musicComposition') },
   ];
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
@@ -64,7 +64,7 @@ export default function Layout() {
       <div className="main-content">
         <header className="header-bar">
           <div style={{display:'flex', alignItems:'center', gap:'1rem'}}>
-            <strong>{t('appTitle')}</strong>
+            {/* Removed duplicate title to avoid repetition with sidebar logo/title */}
           </div>
           <div style={{display:'flex', alignItems:'center', gap:'1rem', position:'relative'}}>
             <LanguageSwitcher />
@@ -77,7 +77,7 @@ export default function Layout() {
                   if(e.key === 'Escape'){ setOpen(false); }
                   if(e.key === 'Enter' && results.length){ go(results[0].path); }
                 }}
-                placeholder={t('nav.dashboard') + ', ' + t('nav.portfolio') + '...'}
+                placeholder={t('nav.dashboard') + '...'}
                 aria-label="Search sections"
               />
               {open && results.length > 0 && (

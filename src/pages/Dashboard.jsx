@@ -8,13 +8,13 @@ export default function Dashboard(){
   const cards = [
     { to: '/script', label: t('nav.script'), cta: t('nav.portfolio') === 'Portfolio' ? 'View description →' : 'විස්තරය බලන්න →' },
     { to: '/application', label: t('nav.application'), cta: t('nav.portfolio') === 'Portfolio' ? 'View pages →' : 'පිටු බලන්න →' },
-    { to: '/portfolio', label: t('nav.portfolio'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
     { to: '/costume', label: t('nav.costume'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
     { to: '/background-setup', label: t('nav.backgroundSetup'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
     { to: '/props', label: t('nav.props'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
     { to: '/practices', label: t('nav.practices'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
     { to: '/preparations', label: t('nav.preparations'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
     { to: '/fund-raising', label: t('nav.fundRaising'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
+  { to: '/music-composition', label: t('nav.musicComposition'), cta: t('nav.portfolio') === 'Portfolio' ? 'Open gallery →' : 'ගැලරිය විවෘත කරන්න →' },
   ];
   return (
     <div>

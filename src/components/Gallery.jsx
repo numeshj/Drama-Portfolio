@@ -12,6 +12,7 @@ export default function Gallery({ category }) {
     practices: import.meta.glob('/src/assets/photos/practices/*.{png,jpg,jpeg,gif,webp,avif}'),
     preparations: import.meta.glob('/src/assets/photos/preparations/*.{png,jpg,jpeg,gif,webp,avif}'),
     'fund-raising': import.meta.glob('/src/assets/photos/fund-raising/*.{png,jpg,jpeg,gif,webp,avif}'),
+    'music-composition': import.meta.glob('/src/assets/photos/music-composition/*.{png,jpg,jpeg,gif,webp,avif}'),
   }), []);
 
   React.useEffect(() => {
