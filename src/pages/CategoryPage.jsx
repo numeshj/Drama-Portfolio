@@ -53,11 +53,23 @@ export default function CategoryPage({ category, title }){
     };
     mergedDesc = (mergedDesc || '') + jew[lang];
   }
-  // Attempt to import props video statically (will be undefined if missing)
-  let propsVideo;
+  
+  // Video mapping for all categories with videos
+  const videoMap = {
+    'props': 'video-props.mp4',
+    'background-setup': 'set.mp4',
+    'costume': 'backdround.mp4',
+    'script': 'play.mp4',
+    'practices': 'practice.mp4',
+    'preparations': 'preparation.mp4'
+  };
+  
+  // Attempt to import video for current category
+  let categoryVideo;
   try {
-    if(isProps){
-      propsVideo = new URL('../assets/videos/props/video-props.mp4', import.meta.url).href;
+    const videoFile = videoMap[category];
+    if(videoFile){
+      categoryVideo = new URL(`../assets/videos/${category}/${videoFile}`, import.meta.url).href;
     }
   } catch(e){ /* ignore */ }
   return (
@@ -75,11 +87,11 @@ export default function CategoryPage({ category, title }){
           letterSpacing:'.15px'
         }}>{mergedDesc}</p>
       )}
-      {isProps && propsVideo && (
+      {categoryVideo && (
         <div style={{margin:'1.75rem 0 1.25rem', width:'100%'}}>
           <div style={{position:'relative', width:'100%', aspectRatio:'16 / 9', background:'#000', borderRadius:'14px', overflow:'hidden', boxShadow:'0 10px 34px -12px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,0.05)'}}>
             <video
-              src={propsVideo}
+              src={categoryVideo}
               ref={el => {
                 if(el){
                   el.muted = true;

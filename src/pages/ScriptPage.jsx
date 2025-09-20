@@ -46,10 +46,43 @@ export default function ScriptPage(){
   const isSinhala = lang === 'si';
   const content = isSinhala ? sinhala : english;
   const heading = isSinhala ? t('') : t('');
+  
+  // Import script video
+  let scriptVideo;
+  try {
+    scriptVideo = new URL('../assets/videos/script/play.mp4', import.meta.url).href;
+  } catch(e){ /* ignore */ }
+  
   return (
     <div className="script-page single">
       <h2 className="gradient-text" style={{marginTop:0}}>{t('script.title')}</h2>
       <p style={{opacity:.8, marginTop:'.25rem'}}>{t('script.subtitle')}</p>
+      
+      {scriptVideo && (
+        <div style={{margin:'1.75rem 0 1.25rem', width:'100%'}}>
+          <div style={{position:'relative', width:'100%', aspectRatio:'16 / 9', background:'#000', borderRadius:'14px', overflow:'hidden', boxShadow:'0 10px 34px -12px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,0.05)'}}>
+            <video
+              src={scriptVideo}
+              ref={el => {
+                if(el){
+                  el.muted = true;
+                  el.playsInline = true;
+                  const tryPlay = () => { el.play().catch(()=>{}); };
+                  if(el.readyState >= 2){ tryPlay(); } else { el.addEventListener('canplay', tryPlay, { once:true }); }
+                }
+              }}
+              autoPlay
+              muted
+              playsInline
+              controls
+              style={{position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover'}}
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
+      
       <div className="script-panels single">
         <section className="script-panel">
           <h3>{heading}</h3>
