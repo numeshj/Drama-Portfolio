@@ -47,6 +47,11 @@ export default function Layout() {
     return label.replace(/^(\p{Emoji}+\s*)/u, '');
   }
   
+  // Get app title without emoji for collapsed sidebar
+  function getAppTitleOnly() {
+    return getTextOnly(t('appTitle'));
+  }
+  
   return (
     <div className="app-shell" data-sidebar-collapsed={sidebarCollapsed}>
       <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
@@ -115,8 +120,7 @@ export default function Layout() {
           <div style={{display:'flex', alignItems:'center', gap:'1rem'}}>
             {sidebarCollapsed && (
               <div style={{display:'flex', alignItems:'center', gap:'.5rem'}}>
-                <img src={logo} alt="Logo" style={{width:32,height:32,borderRadius:8, objectFit:'cover'}} />
-                <h1 style={{margin:0, fontSize:'1rem'}}>{t('appTitle')}</h1>
+                <h1 style={{margin:0, fontSize:'1rem'}}>{getAppTitleOnly()}</h1>
               </div>
             )}
           </div>
