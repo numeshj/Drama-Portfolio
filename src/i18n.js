@@ -2,7 +2,7 @@ export const translations = {
   en: {
     appTitle: "🎭 Drama Portfolio",
     nav: {
-      dashboard: "Dashboard",
+      dashboard: "🏠 Dashboard",
       costume: "👗 Costume Design",
       backgroundSetup: "🏛️ Background & Stage Design",
       props: "💍 Props",
@@ -10,8 +10,8 @@ export const translations = {
       preparations: "🛠️ Preparations",
       fundRaising: "💰 Fundraising",
       musicComposition: "🎶 Music Composition",
-      script: "Script",
-      application: "Application",
+      script: "📜 Script",
+      application: "📋 Application",
     },
     hero: { tagline: "Creativity • Teamwork • Culture" },
     dashboard: {

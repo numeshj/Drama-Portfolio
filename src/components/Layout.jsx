@@ -9,6 +9,7 @@ import Footer from './Footer';
 
 export default function Layout() {
   const { t } = useLanguage();
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const categories = [
     { path: '/', label: t('nav.dashboard'), exact: true },
     { path: '/script', label: t('nav.script') },
@@ -34,14 +35,54 @@ export default function Layout() {
     navigate(path);
     setOpen(false); setQuery('');
   }
+  
+  // Extract icon from label text (first emoji if present)
+  function getIcon(label) {
+    const match = label.match(/^(\p{Emoji}+)/u);
+    return match ? match[1] : '📄';
+  }
+  
+  // Get text without icon
+  function getTextOnly(label) {
+    return label.replace(/^(\p{Emoji}+\s*)/u, '');
+  }
+  
   return (
-    <div className="app-shell">
-      <aside className="sidebar">
+    <div className="app-shell" data-sidebar-collapsed={sidebarCollapsed}>
+      <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <div>
-          <div style={{display:'flex', alignItems:'center', gap:'.65rem', margin:'0 0 1rem'}}>
-            <img src={logo} alt="Logo" style={{width:48,height:48,borderRadius:12, objectFit:'cover', boxShadow:'0 4px 10px -3px rgba(0,0,0,.6)'}} />
-            <h1 style={{margin:0, fontSize:'1.05rem'}}>{t('appTitle')}</h1>
-          </div>
+          {!sidebarCollapsed && (
+            <div style={{display:'flex', alignItems:'center', gap:'.65rem', margin:'0 0 1rem'}}>
+              <img src={logo} alt="Logo" style={{width:48,height:48,borderRadius:12, objectFit:'cover', boxShadow:'0 4px 10px -3px rgba(0,0,0,.6)'}} />
+              <h1 style={{margin:0, fontSize:'1.05rem'}}>{t('appTitle')}</h1>
+            </div>
+          )}
+          {sidebarCollapsed && (
+            <div style={{display:'flex', justifyContent:'center', margin:'0 0 1rem'}}>
+              <img src={logo} alt="Logo" style={{width:40,height:40,borderRadius:10, objectFit:'cover', boxShadow:'0 4px 10px -3px rgba(0,0,0,.6)'}} />
+            </div>
+          )}
+          
+          <button 
+            className="sidebar-toggle"
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            style={{
+              width: '100%',
+              marginBottom: '1rem',
+              padding: '.5rem',
+              background: 'rgba(255,255,255,0.05)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-md)',
+              color: 'var(--color-text-dim)',
+              fontSize: '.7rem',
+              cursor: 'pointer',
+              transition: 'all var(--transition-fast)'
+            }}
+          >
+            {sidebarCollapsed ? '→' : '←'}
+          </button>
+          
           <ul className="nav-links">
             {categories.map(cat => (
               <li key={cat.path}>
@@ -49,22 +90,35 @@ export default function Layout() {
                   to={cat.path}
                   end={cat.path === '/'}
                   className={({ isActive }) => isActive ? 'active' : undefined}
+                  title={sidebarCollapsed ? getTextOnly(cat.label) : undefined}
                 >
-                  <span>{cat.label}</span>
+                  <span className="nav-icon">{getIcon(cat.label)}</span>
+                  {!sidebarCollapsed && <span className="nav-text">{getTextOnly(cat.label)}</span>}
                 </NavLink>
               </li>
             ))}
           </ul>
         </div>
-        <div style={{marginTop: 'auto', display:'flex', gap:'.5rem', alignItems:'center', justifyContent:'space-between'}}>
-          <ThemeToggle />
-          <span className="badge">v1</span>
+        <div style={{marginTop: 'auto', display:'flex', gap:'.5rem', alignItems:'center', justifyContent: sidebarCollapsed ? 'center' : 'space-between'}}>
+          {!sidebarCollapsed && <ThemeToggle />}
+          {!sidebarCollapsed && <span className="badge">v1</span>}
+          {sidebarCollapsed && (
+            <div style={{display:'flex', flexDirection:'column', gap:'.5rem', alignItems:'center'}}>
+              <ThemeToggle />
+              <span className="badge" style={{fontSize:'.5rem'}}>v1</span>
+            </div>
+          )}
         </div>
       </aside>
       <div className="main-content">
         <header className="header-bar">
           <div style={{display:'flex', alignItems:'center', gap:'1rem'}}>
-            {/* Removed duplicate title to avoid repetition with sidebar logo/title */}
+            {sidebarCollapsed && (
+              <div style={{display:'flex', alignItems:'center', gap:'.5rem'}}>
+                <img src={logo} alt="Logo" style={{width:32,height:32,borderRadius:8, objectFit:'cover'}} />
+                <h1 style={{margin:0, fontSize:'1rem'}}>{t('appTitle')}</h1>
+              </div>
+            )}
           </div>
           <div style={{display:'flex', alignItems:'center', gap:'1rem', position:'relative'}}>
             <LanguageSwitcher />

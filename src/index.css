@@ -112,6 +112,11 @@ a:hover {
   display: grid;
   grid-template-columns: 250px 1fr;
   width: 100%;
+  transition: grid-template-columns 0.3s ease;
+}
+
+.app-shell[data-sidebar-collapsed="true"] {
+  grid-template-columns: 70px 1fr;
 }
 
 .sidebar {
@@ -126,6 +131,21 @@ a:hover {
   position: sticky;
   top: 0;
   height: 100vh;
+  transition: padding 0.3s ease, width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  padding: 1.1rem .5rem 1.25rem;
+  align-items: center;
+}
+
+.sidebar-toggle {
+  transition: all var(--transition-fast);
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255,255,255,0.08) !important;
+  color: var(--color-accent) !important;
 }
 
 .sidebar h1 {
@@ -156,7 +176,29 @@ a:hover {
   line-height: 1.2;
   letter-spacing: .3px;
   isolation: isolate;
-  transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), padding 0.3s ease;
+}
+
+.sidebar.collapsed .nav-links a {
+  padding: .6rem .45rem;
+  justify-content: center;
+  gap: 0;
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.2rem;
+}
+
+.nav-text {
+  transition: opacity 0.2s ease;
+}
+
+.sidebar.collapsed .nav-text {
+  display: none;
 }
 
 /* Ambient hover glow */
